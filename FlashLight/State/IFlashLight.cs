@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ex2
+namespace StatePattern
 {
     // Interface for FlashLight
     public interface IFlashLight

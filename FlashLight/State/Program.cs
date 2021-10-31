@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Ex2
+namespace StatePattern
 {
     class Program
     {

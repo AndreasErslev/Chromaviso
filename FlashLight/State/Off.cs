@@ -4,20 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ex2
+namespace StatePattern
 {
     // Off state
     public class Off : FlashLightState
     {
+        public bool OnOffState = false;
+        public string _activeState = "Off";
         // Retunere information om state er On eller Off
         public override bool OnOff()
         {
-            return false;
+            return OnOffState;
         }
         // Fortæller hvilket state der er aktivt
         public override string ActiveState()
         {
-            return "Off";
+            return _activeState;
         }
         // Handler der kaldes ved "Invoke" kald
         public override void HandlePower(object sender, IFlashLight context)
