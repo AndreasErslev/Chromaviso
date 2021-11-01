@@ -13,6 +13,7 @@ namespace StatePattern
         public event EventHandler<IFlashLight> PowerEventOff;
         public void Power(IFlashLight e, bool _eventActive);
         public void SetState(FlashLightState s);
+        public void LightSwitch();
 
     }
 }

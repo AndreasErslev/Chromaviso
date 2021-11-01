@@ -17,10 +17,9 @@ namespace StatePattern
         public event EventHandler<On> SolidModeEvent;
         public event EventHandler<On> StrobeModeEvent;
 
-        private On _mode;
-
         // Opretter abstract state, der kan symbolisere de states tilknyttet FlashLightState
         private FlashLightState _state;
+        private On _mode;
         private string _modeActive = "0";
 
         // Event "Invoke" metode, der aktivere eventhandler (som findes i On, Off og FlashLightState)
@@ -48,10 +47,10 @@ namespace StatePattern
         {
             _state = new Off();
 
-            _mode = new Strobe();
+            _mode = new Solid();
             SolidModeEvent += _mode.HandleMode;
 
-            _mode
+            _mode = new Strobe();
             StrobeModeEvent += _mode.HandleMode;
 
         }
@@ -68,31 +67,45 @@ namespace StatePattern
                 // Bestemmer om der skal tændes eller slukkes, alt efter hvilket state der er aktivt
                 if (_state.OnOff()) {
                     
-                    Console.WriteLine("Do you want to activate Strobe mode? Press 1: ");
+                    Console.WriteLine("Enter FlashLight mode ");
+                    Console.Write("Press 1 for Strobe | Press 0 for Solid: ");
                     _modeActive = Console.ReadLine();
 
-                    if (_modeActive == "1")
+                    switch (_modeActive)
                     {
-                        s.Mode(_state, ModeEvent);
-
-                        if (_state.ModeType())
-                        {
-                            LightOn();
-                        }
-                        else if (!_state.ModeType())
-                        {
-                            Strobe();
-                        }
+                        case "1":
+                            _state.Mode(_state, StrobeModeEvent);
+                            break;
+                        default:
+                            _state.Mode(_state, SolidModeEvent);
+                            break;
                     }
-
-                }
-                else if (!_state.OnOff())
-                {
-                    LightOff();
                 }
             }
         }
+
         // Symoblisere fysisk FlashLight og bestemmer om FlashLight er tændt eller slukket
+        public void LightSwitch()
+        {
+            if (_state.OnOff())
+            {
+                if (_state.ModeType())
+                {
+                    Strobe();
+                }
+
+                else if (!_state.ModeType())
+                {
+                    LightOn();
+                }
+            }
+
+            else if (!_state.OnOff())
+            {
+                LightOff();
+            }
+
+        }
         private static void LightOn()
         {
             Console.WriteLine("Flashlight is On!");

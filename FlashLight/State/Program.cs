@@ -31,10 +31,12 @@ namespace StatePattern
                 if (active)
                 {
                     flashLight.Power(flashLight, false);
+                    flashLight.LightSwitch();
                 }
                 else if (!active)
                 {
                     flashLight.Power(flashLight, true);
+                    flashLight.LightSwitch();
                 }
             }
         }

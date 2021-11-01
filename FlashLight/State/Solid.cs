@@ -8,10 +8,14 @@ namespace StatePattern
 {
     public class Solid : On
     {
-        private readonly bool modeType = true;
+        private readonly bool modeType = false;
         public override void HandleMode(object sender, On context)
         {
             context.SetModeState(new Strobe());
+        }
+        public override bool PassType()
+        {
+            return modeType;
         }
     }
 }

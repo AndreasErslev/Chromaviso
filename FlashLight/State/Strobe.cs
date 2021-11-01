@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Threading;
 
 namespace StatePattern
 {
@@ -13,6 +12,10 @@ namespace StatePattern
         public override void HandleMode(object sender, On context)
         {
             context.SetModeState(new Solid());
+        }
+        public override bool PassType()
+        {
+            return modeType;
         }
     }
 }
