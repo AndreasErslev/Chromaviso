@@ -6,16 +6,12 @@ using System.Threading.Tasks;
 
 namespace ObserverPatteren
 {
-    public class Subscriber : IObserver
+    public class Subscriber : Observer
     {
         // Oprettelse af posthus init data
         private readonly PostOffice _postOffice = new PostOffice();
         private readonly string _name;
         private readonly List<Mail> _subscriptions;
-        public string Name()
-        {
-            return _name; 
-        }
         // Oprettelse af posthus init data -Construtor
         public Subscriber(string name, Mail subscription)
         {
@@ -24,13 +20,17 @@ namespace ObserverPatteren
             _name = name;
             _subscriptions.Add(subscription);
         }
+        public override string Name()
+        {
+            return _name;
+        }
         // Giver mulighed for at tilføje ny mail subscribion til bruger
-        public void AddSubscription(Mail subscription)
+        public override void AddSubscription(Mail subscription)
         {
             _subscriptions.Add(subscription);
         }
         // Giver mulighed for at fjerne en subscription til bruger
-        public void RemoveSubscription(Mail subscription)
+        public override void RemoveSubscription(Mail subscription)
         {
             foreach (var mailType in _subscriptions.ToList())
             {
@@ -38,7 +38,7 @@ namespace ObserverPatteren
             }
         }
         // Laver en Update, som gør at brugere modtager mail - kaldes fra IObserver der bliver aktiveret fra Subject
-        public void Update()
+        public override void Update()
         {
             ReadMail();
         }

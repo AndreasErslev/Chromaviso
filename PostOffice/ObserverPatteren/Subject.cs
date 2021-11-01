@@ -13,9 +13,9 @@ namespace ObserverPatteren
     {
         // Laver en liste af alle de forskellige brugere (En forsimplet "database" af brugere)
         // Der bruges IObserver, da der i teorien kunne være mange forskelige observers (Som f.eks. Subscriber)
-        readonly List<IObserver> _observers = new List<IObserver>();
+        readonly List<Observer> _observers = new List<Observer>();
         // Tilføjer brugere til liste, som gør det muligt at opdatere alle de brugere der er tilknyttet
-        public void Attach(IObserver observer)
+        public void Attach(Observer observer)
         {
             _observers.Add(observer);
         }

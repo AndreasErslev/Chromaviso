@@ -9,11 +9,11 @@ namespace ObserverPatteren
 {
     // Interface
     // Interfaces gør det muligt at have mange forskellige Subscribers, der alle følge samme struktur.
-    public interface IObserver
+    public abstract class Observer
     {
-        public string Name();
-        public void AddSubscription(Mail subscription);
-        public void RemoveSubscription(Mail subscription);
-        public void Update();
+        public virtual string Name() { return "Unknown"; }
+        public virtual void AddSubscription(Mail subscription) { }
+        public virtual void RemoveSubscription(Mail subscription) { }
+        public abstract void Update();
     }
 }

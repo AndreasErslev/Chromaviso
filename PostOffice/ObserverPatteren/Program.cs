@@ -32,10 +32,10 @@ namespace ObserverPatteren
             Console.WriteLine("Post Office is open!");
 
             PostOffice postOffice = new PostOffice();
-            IObserver Allan = new Subscriber("Allan", Mail.Magazine);
+            Observer Allan = new Subscriber("Allan", Mail.Magazine);
             postOffice.Attach(Allan);
 
-            IObserver Karsten = new Subscriber("Karsten", Mail.Ad);
+            Observer Karsten = new Subscriber("Karsten", Mail.Ad);
             Karsten.AddSubscription(Mail.Magazine);
             Karsten.AddSubscription(Mail.PostCard);
             postOffice.Attach(Karsten);
@@ -78,7 +78,7 @@ namespace ObserverPatteren
 
                     // Giver mulighed for at tilknyttet en bruger flere typer af mails
                     Console.WriteLine("Do you want to add more subscriptions");
-                    Console.WriteLine("Press 0 if you are done | Press 1 if you want to add more subscriptions");
+                    Console.Write("Press 0 if you are done | Press 1 if you want to add more subscriptions: ");
 
                     // Hvis done skiftes til "0" vil for-løkken stoppe og der vil ikke kunne tilføjes flere typer af mails til den givende bruger
                     done = Console.ReadLine(); 
@@ -90,7 +90,7 @@ namespace ObserverPatteren
 
                 // Giver mulighed for at tilføje flere nye brugere
                 Console.WriteLine("Do you want to add more subscriptibers?");
-                Console.WriteLine("Press 0 if you are done | Press 1 if you want to add more subscriptibers");
+                Console.Write("Press 0 if you are done | Press 1 if you want to add more subscriptibers: ");
                 
                 // Hvis exit != 1 vil while-løkken stoppe og der kan ikke tilføjes flere brugere
                 exit = Console.ReadLine();
