@@ -112,7 +112,7 @@ namespace StatePattern
         // Aktivere Stobe lys
         private static void Strobe()
         {
-            for (int i = 0; i < 10; i++)
+            for (int stobeTime = 0; stobeTime < 10; stobeTime++)
             {
                 Console.WriteLine("FLASH!");
                 Thread.Sleep(250);
