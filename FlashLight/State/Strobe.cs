@@ -8,12 +8,15 @@ namespace StatePattern
 {
     public class Strobe : On
     {
-        private readonly bool modeType = true;
+        // Sætter værdien for hvilken mode er aktiv
+        private readonly bool modeType = false;
+        // Event handler for at bestemme mode
         public override void HandleMode(object sender, On context)
         {
             context.SetModeState(new Solid());
         }
-        public override bool PassType()
+        // Retunere mode typen
+        public override bool ModeType()
         {
             return modeType;
         }

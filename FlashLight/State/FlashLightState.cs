@@ -12,6 +12,7 @@ namespace StatePattern
         public abstract bool OnOff();
         public abstract string ActiveState();
         public abstract void HandlePower(object sender, IFlashLight context);
+        public virtual void HandleMode(object sender, On context) { }
         public virtual void Mode(FlashLightState e, EventHandler<On> handler) { }
         public virtual bool ModeType() { return false; }
     }

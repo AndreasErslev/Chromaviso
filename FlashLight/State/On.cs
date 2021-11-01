@@ -9,35 +9,34 @@ namespace StatePattern
     // On state 
     public class On : FlashLightState
     {
+        // Opsætter relevante værdier tilknyttet On/Off state
+        private readonly bool _onOffState = true;
+        private readonly string _activeState = "On";
 
-        public bool OnOffState = true;
+        // Bestemmer _mode af typen On
         private On _mode;
-        public string _activeState = "On";
-        public virtual void HandleMode(object sender, On context) {}
-        public virtual bool PassType() { return false; }
 
-        On
-
-        public event EventHandler<On> SolidModeEvent;
-        public event EventHandler<On> StrobeModeEvent;
+        // Udfører event ud fra hvilket event der sendes
         public override void Mode(FlashLightState e, EventHandler<On> handler)
         {
 
             handler?.Invoke(this, (On)e);
 
         }
+        // Bestemmer hvilket mode der er aktivt
         public void SetModeState(On mode)
         {
             _mode = mode;
         }
-        public bool ModeType()
+        // Retunere information om hvilket mode er aktivt
+        public override bool ModeType()
         {
-            return _mode.PassType();
+            return _mode.ModeType();
         }
         // Retunere information om state er On eller Off
         public override bool OnOff()
         {
-            return OnOffState;
+            return _onOffState;
         }
         // Fortæller hvilket state der er aktivt
         public override string ActiveState()

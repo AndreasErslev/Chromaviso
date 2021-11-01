@@ -30,6 +30,8 @@ namespace StatePattern
             {
                 if (active)
                 {
+                    // Viser at hvis samme state kaldes 2 gange vil der ignoreres for at sætte nyt state
+                    flashLight.Power(flashLight, false);
                     flashLight.Power(flashLight, false);
                     flashLight.LightSwitch();
                 }

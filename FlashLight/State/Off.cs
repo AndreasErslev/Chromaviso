@@ -9,12 +9,14 @@ namespace StatePattern
     // Off state
     public class Off : FlashLightState
     {
-        public bool OnOffState = false;
-        public string _activeState = "Off";
+        // Opsætter relevante værdier tilknyttet On/Off state
+        private readonly bool _onOffState = false;
+        private readonly string _activeState = "Off";
+
         // Retunere information om state er On eller Off
         public override bool OnOff()
         {
-            return OnOffState;
+            return _onOffState;
         }
         // Fortæller hvilket state der er aktivt
         public override string ActiveState()
