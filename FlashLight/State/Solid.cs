@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace StatePattern
 {
-    public class Solid : On
+    public class Solid : IMode
     {
         // Sætter værdien for hvilken mode er aktiv
         private readonly bool modeType = true;
         // Event handler for at bestemme mode
-        public override void HandleMode(object sender, On context)
+        public void HandleMode(object sender, On context)
         {
             context.SetModeState(new Strobe());
         }
         // Retunere mode typen
-        public override bool ModeType()
+        public bool ModeType()
         {
             return modeType;
         }

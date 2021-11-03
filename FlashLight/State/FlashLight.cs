@@ -19,7 +19,7 @@ namespace StatePattern
 
         // Opretter abstract state, der kan symbolisere de states tilknyttet FlashLightState
         private FlashLightState _state;
-        private FlashLightState _mode;
+        private IMode _mode;
         private string _modeActive = "0";
 
         // Event "Invoke" metode, der aktivere eventhandler (som findes i On, Off og FlashLightState)

@@ -14,7 +14,7 @@ namespace StatePattern
         private readonly string _activeState = "On";
 
         // Bestemmer _mode af typen On
-        private On _mode;
+        private IMode _mode;
 
         // Udfører event ud fra hvilket event der sendes
         public override void Mode(FlashLightState e, EventHandler<On> handler)
@@ -24,7 +24,7 @@ namespace StatePattern
 
         }
         // Bestemmer hvilket mode der er aktivt
-        public void SetModeState(On mode)
+        public void SetModeState(IMode mode)
         {
             _mode = mode;
         }
