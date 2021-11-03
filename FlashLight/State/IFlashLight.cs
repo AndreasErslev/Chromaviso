@@ -15,5 +15,6 @@ namespace StatePattern
         public void SetState(FlashLightState s);
         public void LightSwitch();
 
+
     }
 }
